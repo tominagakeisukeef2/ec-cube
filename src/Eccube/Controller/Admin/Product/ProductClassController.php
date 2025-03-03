@@ -461,6 +461,7 @@ class ProductClassController extends AbstractController
         try {
             return $qb->getQuery()->getSingleResult();
         } catch (NoResultException $e) {
+            $this->logger->error('No product found for id: ' . $id, ['exception' => $e]);
             return null;
         }
     }
